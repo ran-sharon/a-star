@@ -33,8 +33,9 @@ goal location is a natural choice. Setting this function to return a constant wi
 of A* and make the algorithm perform a Dijkstra search.
 
 bool operator< (const Position& lhs, const Position& rhs);
-Used for storing information about the history of arrival at a given position. The only requirement from this
-operator is that if lhs < rhs and rhs < lhs then rhs and lhs should be the same position.
+Used for storing information about the history of arrival at a given position. 
+Needs to comply with the standard requirements of an ordering operator. Namely, trasitivity (x<y, y<z then x<z)
+and reflexivity (!(x<y)&!(y<x) => x==y).
 
 double Move::cost() const;
 The cost of move, the search will find the cheapest solution. Namely, a sequence of moves who arrive at a solved
